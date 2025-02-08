@@ -51,7 +51,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
-              <img src="/api/placeholder/40/40" alt="Nest Logo" className="h-10 transition-transform group-hover:scale-105" />
+              <img src="/logo.png" alt="Nest Logo" className="h-10 transition-transform group-hover:scale-105" />
               <span className="text-primary text-2xl font-bold group-hover:text-opacity-80">ReVal</span>
             </Link>
 
