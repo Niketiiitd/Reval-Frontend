@@ -39,7 +39,7 @@ export function LoginForm({ className, ...props }) {
 
     try {
       // Make the API call using the axios instance
-      const response = await api.post("/api/v1/auth/login", { email: username, password });
+      const response = await api.post("/api/v1/auth/login", { email: username, password },{withCredentials:true});
 
       // Check the response
       if (response.data.success) {
@@ -49,7 +49,7 @@ export function LoginForm({ className, ...props }) {
         localStorage.setItem("lastname", response.data.lastname);
 
         // Redirect to dashboard
-        router.push("/dashboard/home");
+        router.push("/home");
       } else {
         // Show error message from the API
         toast({
