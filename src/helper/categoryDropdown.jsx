@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from "react"
+import * as React from "react" 
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -18,37 +18,37 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-
-const categories = [
-  {
-    value: "electronics",
-    label: "Electronics",
-  },
-  {
-    value: "fashion",
-    label: "Fashion",
-  },
-  {
-    value: "home-appliances",
-    label: "Home Appliances",
-  },
-  {
-    value: "beauty",
-    label: "Beauty & Health",
-  },
-  {
-    value: "sports",
-    label: "Sports & Outdoors",
-  },
-  {
-    value: "automobile",
-    label: "Automobile",
-  },
-  {
-    value: "toys",
-    label: "Toys & Games",
-  },
-]
+import { useCategory } from "@/context/CategoryContext"
+// const categories = [
+//   {
+//     value: "electronics",
+//     label: "Electronics",
+//   },
+//   {
+//     value: "fashion",
+//     label: "Fashion",
+//   },
+//   {
+//     value: "home-appliances",
+//     label: "Home Appliances",
+//   },
+//   {
+//     value: "beauty",
+//     label: "Beauty & Health",
+//   },
+//   {
+//     value: "sports",
+//     label: "Sports & Outdoors",
+//   },
+//   {
+//     value: "automobile",
+//     label: "Automobile",
+//   },
+//   {
+//     value: "toys",
+//     label: "Toys & Games",
+//   },
+// ]
 
 const conditions = [
   {
@@ -70,6 +70,7 @@ const conditions = [
 ]
 
 export function CategoryAndCondition({ type, value, onChange }) {
+  const { selectedCategory, setSelectedCategory, categories } = useCategory();
   const [open, setOpen] = React.useState(false)
   const options = type === "category" ? categories : conditions
 

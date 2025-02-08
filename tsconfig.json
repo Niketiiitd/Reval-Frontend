@@ -23,6 +23,6 @@
       "@public/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Login-form.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Login-form.jsx", "src/app/selling/page.jsx", "src/helper/categoryDropdown.jsx", "src/components/Navbar.jsx"],
   "exclude": ["node_modules"]
 }

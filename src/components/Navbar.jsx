@@ -2,33 +2,35 @@
 import React, { useState } from 'react';
 import { Search, MapPin, ShoppingCart, User, Phone, ChevronDown, Menu, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-
+import { CategoryAndCondition } from '@/helper/categoryDropdown';
+import { useCategory } from "@/context/CategoryContext"
 const Navbar = () => {
+   const { selectedCategory, setSelectedCategory, categories } = useCategory();
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  // const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
   // Sample categories data
-  const categories = [
-    {
-      name: 'Fresh Food',
-      subCategories: ['Meat & Poultry', 'Vegetables', 'Fruits', 'Sea Food']
-    },
-    {
-      name: 'Dairy & Eggs',
-      subCategories: ['Milk', 'Butter', 'Cheese', 'Eggs']
-    },
-    {
-      name: 'Beverages',
-      subCategories: ['Coffee', 'Tea', 'Juice', 'Soda']
-    },
-    {
-      name: 'Grocery & Staples',
-      subCategories: ['Rice', 'Flour', 'Sugar', 'Spices']
-    }
-  ];
+  // const categories = [
+  //   {
+  //     name: 'Fresh Food',
+  //     subCategories: ['Meat & Poultry', 'Vegetables', 'Fruits', 'Sea Food']
+  //   },
+  //   {
+  //     name: 'Dairy & Eggs',
+  //     subCategories: ['Milk', 'Butter', 'Cheese', 'Eggs']
+  //   },
+  //   {
+  //     name: 'Beverages',
+  //     subCategories: ['Coffee', 'Tea', 'Juice', 'Soda']
+  //   },
+  //   {
+  //     name: 'Grocery & Staples',
+  //     subCategories: ['Rice', 'Flour', 'Sugar', 'Spices']
+  //   }
+  // ];
 
   // Sample locations
   const locations = [
@@ -81,19 +83,21 @@ const Navbar = () => {
 
             {/* Right Menu */}
             <div className="flex items-center space-x-6">
-              {/* Location Selector */}
+              {/* category Selector */}
+              {/* <CategoryAndCondition type="category" value={itemDetails.category} onChange={(value) => setItemDetails({ ...itemDetails, category: value || "" })} /> */}
+              
               <div className="relative">
                 <button 
                   className="flex items-center space-x-2 hover:text-primary transition-colors"
                   onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
                 >
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="text-sm">Your Location</span>
+                 
+                  <span className="text-sm">Select Location</span>
                   <ChevronDown className={`w-4 h-4 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
+                </button> 
                 
                 {/* Location Dropdown */}
-                {isLocationDropdownOpen && (
+                 {isLocationDropdownOpen && (
                   <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2 z-50">
                     {locations.map((location) => (
                       <button
@@ -108,7 +112,7 @@ const Navbar = () => {
                       </button>
                     ))}
                   </div>
-                )}
+                )} 
               </div>
 
               {/* Cart and Wishlist */}
@@ -146,7 +150,7 @@ const Navbar = () => {
                             <span>Total:</span>
                             <span>${cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</span>
                           </div>
-                          <button className="w-full bg-primary text-white py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                          <button className="w-full bg-primary text-black py-2 rounded-lg hover:bg-opacity-90 transition-colors">
                             View Cart
                           </button>
                         </div>
@@ -179,50 +183,62 @@ const Navbar = () => {
 
       {/* Bottom Navigation */}
       <div className="w-full bg-white shadow-sm">
+        
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             {/* Browse Categories Button */}
-            <div className="relative">
-              <button 
-                className="flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
-                onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-              >
-                <Menu className="w-5 h-5" />
-                <span>Browse All Categories</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isCategoryDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
+           {/* Browse Categories Button */}
+<div className="relative">
+  <button 
+    className="flex items-center space-x-2 bg-primary text-black px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
+    onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+  >
+    <Menu className="w-5 h-5" />
+    <span>Browse All Categories</span>
+    <ChevronDown className={`w-4 h-4 transition-transform ${isCategoryDropdownOpen ? 'rotate-180' : ''}`} />
+  </button>
 
-              {/* Categories Dropdown */}
-              {isCategoryDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
-                  {categories.map((category) => (
-                    <div key={category.name} className="group relative">
-                      <button className="w-full flex items-center justify-between px-4 py-2 hover:bg-secondary hover:text-primary transition-colors">
-                        {category.name}
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                      
-                      {/* Sub-categories */}
-                      <div className="hidden group-hover:block absolute left-full top-0 w-48 bg-white rounded-lg shadow-lg border">
-                        {category.subCategories.map((subCategory) => (
-                          <button
-                            key={subCategory}
-                            className="w-full text-left px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
-                          >
-                            {subCategory}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+  {/* Categories Dropdown */}
+  {isCategoryDropdownOpen && (
+    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
+      {categories && categories.length > 0 ? (
+        categories.map((category) => (
+          <div key={category.value} className="group relative">
+            <button 
+              className="w-full flex items-center justify-between px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
+              onClick={() => setSelectedCategory(category.value)}
+            >
+              {category.label} {/* Ensure correct label */}
+              {category.subCategories && category.subCategories.length > 0 && <ChevronRight className="w-4 h-4" />}
+            </button>
+
+            {/* Subcategories Dropdown */}
+            {category.subCategories && category.subCategories.length > 0 && (
+              <div className="hidden group-hover:block absolute left-full top-0 w-48 bg-white rounded-lg shadow-lg border">
+                {category.subCategories.map((subCategory) => (
+                  <button
+                    key={subCategory}
+                    className="w-full text-left px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
+                  >
+                    {subCategory}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        <p className="text-center py-2 text-gray-500">No Categories Available</p>
+      )}
+    </div>
+  )}
+</div>
+
 
             {/* Main Navigation */}
-            <nav className="flex-1 ml-8">
-              <ul className="flex items-center space-x-6">
-                {['Deals', 'Home', 'About', 'Shop', 'Vendors', 'Mega menu', 'Blog', 'Pages', 'Contact'].map((item) => (
+            <nav className="flex-1">
+              <ul className="flex  ml-8 gap-32">
+                {[ 'Home','Community', 'About', 'Shop'].map((item) => (
                   <li key={item}>
                     <Link 
                       href={`/${item.toLowerCase()}`} 
@@ -237,13 +253,13 @@ const Navbar = () => {
             </nav>
 
             {/* Support Contact */}
-            <div className="flex items-center space-x-2 text-primary group cursor-pointer">
+            {/* <div className="flex items-center space-x-2 text-primary group cursor-pointer">
               <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               <div>
                 <div className="text-sm font-medium group-hover:text-opacity-80 transition-colors">1900 - 888</div>
                 <div className="text-xs text-gray-500">24/7 Support Center</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

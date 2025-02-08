@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { CategoryAndCondition } from "@/helper/category";
+import { CategoryAndCondition } from "@/helper/categoryDropdown";
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -112,7 +112,7 @@ export default function SellingPage() {
       <div className="mt-6">
         <h3 className="font-bold">Item Category</h3>
         <div className='mt-4'>
-          <CategoryAndCondition type="category" value={itemDetails.category} onChange={(value) => setItemDetails({ ...itemDetails, category: value })} />
+          <CategoryAndCondition type="category" value={itemDetails.category} onChange={(value) => setItemDetails({ ...itemDetails, category: value || "" })} />
         </div>
       </div>
 
