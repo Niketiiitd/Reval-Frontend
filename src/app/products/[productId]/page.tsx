@@ -1,4 +1,6 @@
+import CarbonSavings from "@/components/CarbonSavings";
 import Carousel from "@/components/Carousel";
+import CategoryTags from "@/components/CategoryTags";
 import Navbar from "@/components/Navbar";
 import ShippingInfo from "@/components/ShippingInfo";
 import { ImageError } from "next/dist/server/image-optimizer";
@@ -18,8 +20,24 @@ export default async function Page({params}:{params:{productId:string}}) {
     <div className=" flex flex-col justify-center items-center gap-4">
         <Navbar/>
         <div className=" w-full flex flex-row justify-around">
-            <div className="   w-80 h-96">
-                <Carousel Images={data.imgUrls}/>
+            <div className=" flex flex-col items-center gap-12">
+                <div className="   w-80 h-72">
+                    <Carousel Images={data.imgUrls}/>
+                </div>
+                {/* <div className=" self-center flex flex-col border border-[#ECECEC] mx-2 shadow-lg shadow-[#F2F3F4] p-4 rounded-md gap-2  w-52 h-72">
+                    <h3 className=" text-lg font-medium items-center self-center">Category</h3>
+                    <div className="h-[3px] w-1/2 bg-[#BCE3C9]"></div>
+
+                    {data.categories.map((c) => {
+                        return (
+                            <div key={c} className="flex flex-row gap-1 font-normal">
+                            <img src="/category.png" alt="Category" />
+                            <p>{c}</p>
+                            </div>
+                        );
+                    })}
+                </div> */}
+                <CategoryTags categories={data.categories}/>
             </div>
             {/* <div className=" flex flex-col w-64 mx-2 gap-5"> */}
                 <div className=" flex flex-col w-72 h-96 gap-2">
@@ -36,19 +54,8 @@ export default async function Page({params}:{params:{productId:string}}) {
             {/* </div> */}
 
             <div className=" flex flex-col w-64 mx-2 gap-5">
-                <div className=" self-center flex flex-col border border-[#ECECEC] mx-2 shadow-lg shadow-[#F2F3F4] p-4 rounded-md gap-2  w-52 h-72">
-                    <h3 className=" text-lg font-medium items-center self-center">Category</h3>
-                    <div className="h-[3px] w-1/2 bg-[#BCE3C9]"></div>
-
-                    {data.categories.map((c) => {
-                        return (
-                            <div key={c} className="flex flex-row gap-1 font-normal">
-                            <img src="/category.png" alt="Category" />
-                            <p>{c}</p>
-                            </div>
-                        );
-                    })}
-                </div>
+                <CarbonSavings savedKg={100}/>
+                
                 <ShippingInfo/>
             </div>
         </div>
