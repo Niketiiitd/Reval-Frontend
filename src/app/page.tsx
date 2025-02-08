@@ -2,7 +2,7 @@
 export default function Home() {
   return (
     <div>
-     {/* <Home/> */}
+     {/* <Home/> */} hi there
     </div>
    
     // <button className=" btn btn-primary"> hi</button>
