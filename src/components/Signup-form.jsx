@@ -7,9 +7,10 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import { ToastAction } from "@radix-ui/react-toast"
 import Link from "next/link";
+import { useRouter } from "next/navigation"
 
 export default function SignupForm({
   className,
