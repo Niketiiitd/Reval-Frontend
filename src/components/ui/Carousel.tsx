@@ -1,36 +1,35 @@
 "use client"
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 const carouselItems = [
   {
-    title: "Fresh Vegetables",
-    subtitle: "Big discount",
-    description: "Save up to 50% off on your first order",
+    title: "Arts, Crafts & Sewing",
+    subtitle: "Creative Essentials",
+    description: "Get up to 40% off on arts and crafts supplies!",
     bgColor: "bg-secondary",
-    image: "/api/placeholder/600/400"
+    image: "https://artfulparent.com/wp-content/uploads/2023/01/stitching-with-kids_feature-copy.png"
   },
   {
-    title: "Organic Fruits",
-    subtitle: "Special Offer",
-    description: "Get 30% off on selected organic fruits",
+    title: "Electronics",
+    subtitle: "Tech Deals",
+    description: "Save big on the latest gadgets and accessories.",
     bgColor: "bg-primary-content",
     image: "/api/placeholder/600/400"
   },
   {
-    title: "Fresh Dairy",
-    subtitle: "Limited Time",
-    description: "Buy 2 Get 1 Free on dairy products",
+    title: "Sports & Outdoors",
+    subtitle: "Gear Up",
+    description: "Exclusive discounts on sports gear and outdoor equipment.",
     bgColor: "bg-secondary",
     image: "/api/placeholder/600/400"
   },
   {
-    title: "Healthy Snacks",
-    subtitle: "Weekly Deal",
-    description: "All natural snacks at 25% off",
+    title: "Sneakers Collection",
+    subtitle: "Step Up Your Style",
+    description: "Explore trendy sneakers with up to 30% off.",
     bgColor: "bg-primary-content",
-    image: "/api/placeholder/600/400"
-  }
+    image: "/api/placeholder/600/400" // Replace this with an actual sneaker image URL if available.
+  },
 ];
 
 const Carousel = () => {
