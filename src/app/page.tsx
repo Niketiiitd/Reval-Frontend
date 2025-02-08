@@ -1,4 +1,3 @@
-
 export default function Home() {
   return (
     <div>
@@ -8,4 +7,6 @@ export default function Home() {
     // <button className=" btn btn-primary"> hi</button>
   );
 }
+
+
 

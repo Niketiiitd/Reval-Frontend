@@ -134,7 +134,7 @@ const ShippingInfo = () => {
       <div className="flex">
         <span className="font-medium mr-2 w-16">Payments:</span>
         <div className="flex gap-1">
-          {['PayPal', 'GPay', 'VISA', 'MC', 'Disc', 'Diners'].map((payment, index) => (
+          {['PayPal', 'GPay', 'VISA', 'MC', 'Disc'].map((payment, index) => (
             <div 
               key={payment} 
               className="w-8 h-5 rounded flex items-center justify-center text-[10px] font-bold

@@ -23,6 +23,10 @@
       "@public/*": ["./public/*"]
     }
   },
+<<<<<<< HEAD
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Login-form.jsx", "src/app/selling/page.jsx", "src/helper/categoryDropdown.jsx", "src/components/Navbar.jsx", "src/app/(dashboard)/community/[id]/page.jsx"],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Login-form.jsx", "src/app/selling/page.jsx", "src/helper/categoryDropdown.jsx", "src/components/Navbar.jsx", "src/app/(community)/SustainableFeed/[id]/page.jsx", "src/app/utils/api.ts"],
+>>>>>>> 1f9165bdb30803b7c443b98a920955d26e836b93
   "exclude": ["node_modules"]
 }

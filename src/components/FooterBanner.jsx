@@ -18,11 +18,11 @@ const SubscriptionBanner = () => {
             {/* Left Content */}
             <div className="max-w-xl">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
-                Stay home & get your daily needs from our shop
+              "Waste not, want not - Close the loop"
               </h2>
               <p className="text-slate-600 mb-8">
-                Start You'r Daily Shopping with{" "}
-                <span className="text-emerald-600">Nest Mart</span>
+                Start your shopping with{" "}
+                <span className="text-emerald-600">Reval</span>
               </p>
               
               <form onSubmit={handleSubmit} className="flex gap-2">
@@ -41,33 +41,6 @@ const SubscriptionBanner = () => {
                   Subscribe
                 </Button>
               </form>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative h-full">
-              <div className="absolute right-0 bottom-0">
-                <img
-                  src="/api/placeholder/600/600"
-                  alt="Delivery person with groceries"
-                  className="object-contain"
-                />
-              </div>
-              {/* Floating vegetable images */}
-              <img
-                src="/api/placeholder/100/100"
-                alt="Vegetables 1"
-                className="absolute top-1/4 right-1/4 w-16 h-16 object-contain"
-              />
-              <img
-                src="/api/placeholder/100/100"
-                alt="Vegetables 2"
-                className="absolute top-1/3 right-1/3 w-16 h-16 object-contain"
-              />
-              <img
-                src="/api/placeholder/100/100"
-                alt="Vegetables 3"
-                className="absolute bottom-1/3 right-1/2 w-16 h-16 object-contain"
-              />
             </div>
           </div>
         </div>
