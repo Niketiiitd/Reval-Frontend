@@ -7,16 +7,16 @@ const CategoryScroll = () => {
   const scrollRef = useRef(null);
 
   const categories = [
-    { name: 'Cake & Milk', items: 26, image: '/api/placeholder/80/80', slug: 'cake-milk' },
-    { name: 'Organic Kiwi', items: 28, image: '/api/placeholder/80/80', slug: 'organic-kiwi' },
-    { name: 'Peach', items: 14, image: '/api/placeholder/80/80', slug: 'peach' },
-    { name: 'Red Apple', items: 54, image: '/api/placeholder/80/80', slug: 'red-apple' },
-    { name: 'Snack', items: 56, image: '/api/placeholder/80/80', slug: 'snack' },
-    { name: 'Vegetables', items: 72, image: '/api/placeholder/80/80', slug: 'vegetables' },
-    { name: 'Strawberry', items: 36, image: '/api/placeholder/80/80', slug: 'strawberry' },
-    { name: 'Black plum', items: 123, image: '/api/placeholder/80/80', slug: 'black-plum' },
-    { name: 'Custard apple', items: 34, image: '/api/placeholder/80/80', slug: 'custard-apple' },
-    { name: 'Coffe & Tea', items: 89, image: '/api/placeholder/80/80', slug: 'coffee-tea' },
+    { name: 'Appliances', items: 26, image: '/appliances.jpg', slug: 'cake-milk' },
+    { name: 'Sports and fitness', items: 28, image: '/dumbells.webp', slug: 'organic-kiwi' },
+    { name: 'Accessories', items: 14, image: '/accessories.jpg', slug: 'peach' },
+    { name: 'Car & Motorbike', items: 54, image: '/helmet.jpg', slug: 'red-apple' },
+    { name: 'Women \'s clothing', items: 56, image: '/womensclothing.jpg', slug: 'snack' },
+    { name: 'Men \'s clothing', items: 72, image: '/mensclothing.jpg', slug: 'vegetables' },
+    { name: 'TV, Audio & Cameras', items: 36, image: '/electronics.jpg', slug: 'strawberry' },
+    { name: 'Furniture', items: 123, image: '/furniture.jpg', slug: 'black-plum' },
+    { name: 'Bags & luggage', items: 34, image: '/bags.jpg', slug: 'custard-apple' },
+    { name: 'Utensils', items: 89, image: '/utensils.jpg', slug: 'coffee-tea' },
   ];
 
   const scroll = (direction) => {

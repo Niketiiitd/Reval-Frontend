@@ -3,33 +3,33 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 const carouselItems = [
   {
-    title: "Arts, Crafts & Sewing",
-    subtitle: "Creative Essentials",
-    description: "Get up to 40% off on arts and crafts supplies!",
-    bgColor: "bg-secondary",
-    image: "https://artfulparent.com/wp-content/uploads/2023/01/stitching-with-kids_feature-copy.png"
-  },
-  {
     title: "Electronics",
-    subtitle: "Tech Deals",
-    description: "Save big on the latest gadgets and accessories.",
+    subtitle: "Big discount",
+    description: "Save up to 50% off on your first order",
     bgColor: "bg-primary-content",
-    image: "/api/placeholder/600/400"
+    image: "/electronics-1.webp"
   },
   {
-    title: "Sports & Outdoors",
-    subtitle: "Gear Up",
-    description: "Exclusive discounts on sports gear and outdoor equipment.",
-    bgColor: "bg-secondary",
-    image: "/api/placeholder/600/400"
+    title: "Clothes, Shoes and More",
+    subtitle: "Special Offer",
+    description: "Get 30% off on selected organic fruits",
+    bgColor: "bg-accent",
+    image: "/clothes.jpg"
   },
   {
-    title: "Sneakers Collection",
-    subtitle: "Step Up Your Style",
-    description: "Explore trendy sneakers with up to 30% off.",
+    title: "Furniture",
+    subtitle: "Limited Time",
+    description: "Buy 2 Get 1 Free on dairy products",
     bgColor: "bg-primary-content",
-    image: "/api/placeholder/600/400" // Replace this with an actual sneaker image URL if available.
+    image: "/furniture.jpg"
   },
+  {
+    title: "Bags and More",
+    subtitle: "Weekly Deal",
+    description: "All natural snacks at 25% off",
+    bgColor: "bg-accent",
+    image: "/bags.jpg"
+  }
 ];
 
 const Carousel = () => {
@@ -61,17 +61,17 @@ const Carousel = () => {
         {carouselItems.map((item, index) => (
           <div
             key={index}
-            className={`w-full h-full flex-shrink-0 ${item.bgColor} relative`}
+            className={`w-full h-full flex-shrink-0 relative bg-cover bg-center ${item.bgColor}`}
+            style={{ backgroundImage: `url(${item.image})` }}
           >
-            <div className="absolute inset-0 bg-[url('/api/placeholder/600/400')] opacity-10"></div>
-            <div className="relative z-10 flex flex-col justify-center px-16 h-full">
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">
+            <div className="relative z-10 flex flex-col justify-center px-16 h-full bg-black/40">
+              <h2 className="text-4xl font-bold text-white mb-2">
                 {item.title}
               </h2>
-              <h3 className="text-3xl font-semibold text-gray-700 mb-4">
+              <h3 className="text-3xl font-semibold text-white mb-4">
                 {item.subtitle}
               </h3>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-white mb-8">
                 {item.description}
               </p>
               <div className="flex items-center space-x-4">
