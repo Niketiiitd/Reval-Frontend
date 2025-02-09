@@ -1,11 +1,11 @@
 import Image from "next/image"
 import Link from "next/link";
-export default function Carousel({Images}:{Images:string[]}){
+export default function Carousel({Images}:{Images:any[]}){
     return(
         <>
             <div className=" carousel w-full h-full">
                 {
-                    Images.map((img,ind)=>{
+                    Images?.map((img,ind)=>{
                         return (<>
                             <div id={`item${ind+1}`} key={`item${ind+1}`} className="carousel-item w-full">
                             <Image src={img} className="w-full border border-[#ECECEC] shadow-sm shadow-[#F2F3F4] p-4 rounded-md" alt="product image" width={324} height={384}></Image>
