@@ -19,36 +19,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useCategory } from "@/context/CategoryContext"
-// const categories = [
-//   {
-//     value: "electronics",
-//     label: "Electronics",
-//   },
-//   {
-//     value: "fashion",
-//     label: "Fashion",
-//   },
-//   {
-//     value: "home-appliances",
-//     label: "Home Appliances",
-//   },
-//   {
-//     value: "beauty",
-//     label: "Beauty & Health",
-//   },
-//   {
-//     value: "sports",
-//     label: "Sports & Outdoors",
-//   },
-//   {
-//     value: "automobile",
-//     label: "Automobile",
-//   },
-//   {
-//     value: "toys",
-//     label: "Toys & Games",
-//   },
-// ]
 
 const conditions = [
   {
