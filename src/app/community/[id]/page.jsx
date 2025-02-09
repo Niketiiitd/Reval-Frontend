@@ -24,6 +24,8 @@ const SinglePost = () => {
       try {
         setLoading(true);
         const { data } = await api.get(`/api/v1/post/${id}`);
+        console.log(data);
+        
         setPost(data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch post");
@@ -152,7 +154,7 @@ const SinglePost = () => {
                   />
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold">{comment.username || "John Doe"}</span>
+                      <span className="font-semibold">{comment.user.username || "John Doe"}</span>
                       <span className="text-gray-500">1 hour ago</span>
                     </div>
                     <p className="text-gray-800">{comment.text || "This is really helpful, thanks for sharing!"}</p>

@@ -77,7 +77,10 @@ export default function Page({params}:{params:{productId:string}}) {
                     <p className=" text-primary text-xl font-extrabold">${data?.price}</p>
                     <p className=" text-xs text-[#7E7E7E] text">{data?.description}</p>
                     <div className=" flex flex-row gap-1 items-center">
-                        <button className=" btn btn-primary btn-sm w-28 text-xs"><Image src={"/vector.png"} height={15} width={15} alt="cart"></Image>Add to cart</button>
+                    <button className="btn btn-primary btn-sm w-28 text-xs flex items-center justify-center gap-2 p-2">
+  <Image src="/vector.png" height={20} width={15} alt="cart" />
+  Add to cart
+</button>
                         <Image className=" h-4 w-4" src={"/like.png"} height={15} width={15} alt="add to favs"></Image>
                     </div>
                     <div>Product history</div>

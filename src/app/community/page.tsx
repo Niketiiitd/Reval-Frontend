@@ -1,4 +1,5 @@
 "use client"
+import CreatePost from "@/components/CreatePost"
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { Heart, MessageCircle, Share } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import api from "../utils/api";
 import axios from "axios"
+import { useRouter } from "next/navigation";
 
 interface CommentProps {
   text: string;
@@ -37,9 +39,11 @@ const Post: React.FC<PostProps> = ({
 }) => {
   const [newComment, setNewComment] = useState("");
   console.log(comments);
+  const router = useRouter();
+  
   
   return (
-    <Card className="p-4">
+    <Card className="p-4" onClick={()=>router.push(`/community/${id}`)}>
       <CardContent>
         <h3 className="font-bold text-lg">@{username}</h3>
         <img src={image} alt="Post" className="w-full rounded-lg my-2" />
@@ -137,6 +141,7 @@ export default function SustainableFeed() {
 
   return (
     <div className="max-w-xl mx-auto space-y-6 py-6">
+      <CreatePost/>
       {posts.map((post) => (
         <Post
           key={post.id}
