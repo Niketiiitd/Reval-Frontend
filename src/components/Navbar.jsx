@@ -1,36 +1,16 @@
 "use client"
-import React, { useState } from 'react';
-import { Search, MapPin, ShoppingCart, User, Phone, ChevronDown, Menu, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
-import { CategoryAndCondition } from '@/helper/categoryDropdown';
-import { useCategory } from "@/context/CategoryContext"
+import { useCategory } from "@/context/CategoryContext";
+import { ChevronDown, ChevronRight, Menu, Search, ShoppingCart, User } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+
 const Navbar = () => {
-   const { selectedCategory, setSelectedCategory, categories } = useCategory();
+  const { selectedCategory, setSelectedCategory, categories } = useCategory();
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  // const [selectedCategory, setSelectedCategory] = useState('All Categories');
-
-  // Sample categories data
-  // const categories = [
-  //   {
-  //     name: 'Fresh Food',
-  //     subCategories: ['Meat & Poultry', 'Vegetables', 'Fruits', 'Sea Food']
-  //   },
-  //   {
-  //     name: 'Dairy & Eggs',
-  //     subCategories: ['Milk', 'Butter', 'Cheese', 'Eggs']
-  //   },
-  //   {
-  //     name: 'Beverages',
-  //     subCategories: ['Coffee', 'Tea', 'Juice', 'Soda']
-  //   },
-  //   {
-  //     name: 'Grocery & Staples',
-  //     subCategories: ['Rice', 'Flour', 'Sugar', 'Spices']
-  //   }
-  // ];
+  const router = useRouter();
 
   // Sample locations
   const locations = [
@@ -50,16 +30,16 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2 group">
+            <button onClick={() => router.push('/')} className="flex items-center space-x-2 group">
               <img src="/logo.png" alt="Nest Logo" className="h-10 transition-transform group-hover:scale-105" />
               <span className="text-primary text-2xl font-bold group-hover:text-opacity-80">ReVal</span>
-            </Link>
+            </button>
 
             {/* Search Bar */}
             <div className="flex-1 max-w-2xl mx-8">
               <div className="relative">
                 <select 
-                  className="absolute  text-gray-600 bg-transparent appearance-none "
+                  className="absolute text-gray-600 bg-transparent appearance-none"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
@@ -83,21 +63,23 @@ const Navbar = () => {
 
             {/* Right Menu */}
             <div className="flex items-center space-x-6">
-              {/* category Selector */}
-              {/* <CategoryAndCondition type="category" value={itemDetails.category} onChange={(value) => setItemDetails({ ...itemDetails, category: value || "" })} /> */}
-              
+              {/* Sell Now Button */}
+              <button onClick={() => router.push('/selling')} className="bg-primary text-black px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                Sell Now
+              </button>
+
+              {/* Location Selector */}
               <div className="relative">
                 <button 
                   className="flex items-center space-x-2 hover:text-primary transition-colors"
                   onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
                 >
-                 
                   <span className="text-sm">Select Location</span>
                   <ChevronDown className={`w-4 h-4 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
                 </button> 
                 
                 {/* Location Dropdown */}
-                 {isLocationDropdownOpen && (
+                {isLocationDropdownOpen && (
                   <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2 z-50">
                     {locations.map((location) => (
                       <button
@@ -112,7 +94,7 @@ const Navbar = () => {
                       </button>
                     ))}
                   </div>
-                )} 
+                )}
               </div>
 
               {/* Cart and Wishlist */}
@@ -183,83 +165,71 @@ const Navbar = () => {
 
       {/* Bottom Navigation */}
       <div className="w-full bg-white shadow-sm">
-        
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             {/* Browse Categories Button */}
-           {/* Browse Categories Button */}
-<div className="relative">
-  <button 
-    className="flex items-center space-x-2 bg-primary text-black px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
-    onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-  >
-    <Menu className="w-5 h-5" />
-    <span>Browse All Categories</span>
-    <ChevronDown className={`w-4 h-4 transition-transform ${isCategoryDropdownOpen ? 'rotate-180' : ''}`} />
-  </button>
+            <div className="relative">
+              <button 
+                className="flex items-center space-x-2 bg-primary text-black px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
+                onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+              >
+                <Menu className="w-5 h-5" />
+                <span>Browse All Categories</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isCategoryDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
 
-  {/* Categories Dropdown */}
-  {isCategoryDropdownOpen && (
-    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
-      {categories && categories.length > 0 ? (
-        categories.map((category) => (
-          <div key={category.value} className="group relative">
-            <button 
-              className="w-full flex items-center justify-between px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
-              onClick={() => setSelectedCategory(category.value)}
-            >
-              {category.label} {/* Ensure correct label */}
-              {category.subCategories && category.subCategories.length > 0 && <ChevronRight className="w-4 h-4" />}
-            </button>
+              {/* Categories Dropdown */}
+              {isCategoryDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
+                  {categories && categories.length > 0 ? (
+                    categories.map((category) => (
+                      <div key={category.value} className="group relative">
+                        <button 
+                          className="w-full flex items-center justify-between px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
+                          onClick={() => setSelectedCategory(category.value)}
+                        >
+                          {category.label} {/* Ensure correct label */}
+                          {category.subCategories && category.subCategories.length > 0 && <ChevronRight className="w-4 h-4" />}
+                        </button>
 
-            {/* Subcategories Dropdown */}
-            {category.subCategories && category.subCategories.length > 0 && (
-              <div className="hidden group-hover:block absolute left-full top-0 w-48 bg-white rounded-lg shadow-lg border">
-                {category.subCategories.map((subCategory) => (
-                  <button
-                    key={subCategory}
-                    className="w-full text-left px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
-                  >
-                    {subCategory}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        ))
-      ) : (
-        <p className="text-center py-2 text-gray-500">No Categories Available</p>
-      )}
-    </div>
-  )}
-</div>
-
+                        {/* Subcategories Dropdown */}
+                        {category.subCategories && category.subCategories.length > 0 && (
+                          <div className="hidden group-hover:block absolute left-full top-0 w-48 bg-white rounded-lg shadow-lg border">
+                            {category.subCategories.map((subCategory) => (
+                              <button
+                                key={subCategory}
+                                className="w-full text-left px-4 py-2 hover:bg-secondary hover:text-primary transition-colors"
+                              >
+                                {subCategory}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-center py-2 text-gray-500">No Categories Available</p>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* Main Navigation */}
             <nav className="flex-1">
-              <ul className="flex  ml-8 gap-32">
-                {[ 'Home','Community', 'About', 'Shop'].map((item) => (
+              <ul className="flex ml-8 gap-32">
+                {['Home', 'Community', 'About', 'Shop'].map((item) => (
                   <li key={item}>
-                    <Link 
-                      href={`/${item.toLowerCase()}`} 
+                    <button 
+                      onClick={() => router.push(`/${item.toLowerCase()}`)} 
                       className="text-gray-700 hover:text-primary transition-colors relative group"
                     >
                       {item}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
             </nav>
-
-            {/* Support Contact */}
-            {/* <div className="flex items-center space-x-2 text-primary group cursor-pointer">
-              <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              <div>
-                <div className="text-sm font-medium group-hover:text-opacity-80 transition-colors">1900 - 888</div>
-                <div className="text-xs text-gray-500">24/7 Support Center</div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
