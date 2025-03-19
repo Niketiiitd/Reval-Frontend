@@ -1,9 +1,10 @@
 
 ![tw-banner](https://github.com/thirdweb-example/next-starter/assets/57885104/20c8ce3b-4e55-4f10-ae03-2fe4743a5ee8)
 
-# thirdweb-next-starter
-
-Starter template to build an onchain react native app with [thirdweb](https://thirdweb.com/) and [next](https://nextjs.org/).
+ReVal Extension -https://github.com/bhutanidev/reval_extension
+ReVal Backend-https://github.com/Niketiiitd/Reval-Backend
+ReVal SmartCOntract-https://github.com/KniteenK/ReVal-Contracts
+ReVal Recommendation Model-https://github.com/sanyakapoor27/Recommendation-System-HackTU
 
 ## Installation
 
